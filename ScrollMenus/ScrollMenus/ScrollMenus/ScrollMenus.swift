@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct MenuModel {
+    let title: String             // 标题文字，一定要有
+    let imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
+    let imageSelected: UIImage?   // 标题左侧图片，选中状态，可选
+}
+
 class ScrollMenus: UIView {
     
     private var menus: MenusView!
@@ -18,7 +24,7 @@ class ScrollMenus: UIView {
     private let collectionViewModel = CollectionViewModel()
     private var lineOriginalX: CGFloat?
     
-    init(titles: [MenuModel], menuHeight: CGFloat = 44, frame: CGRect) {
+    init(titles: [MenuModel], frame: CGRect, menuHeight: CGFloat = 44) {
         self.titles = titles
         self.menuHeight = menuHeight
         super.init(frame: frame)

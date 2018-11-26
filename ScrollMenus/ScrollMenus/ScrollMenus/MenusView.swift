@@ -14,12 +14,6 @@ protocol MenusViewDelegate: NSObjectProtocol {
     func menuClick(index: Int)
 }
 
-struct MenuModel {
-    let title: String             // 标题文字，一定要有
-    let imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
-    let imageSelected: UIImage?   // 标题左侧图片，选中状态，可选
-}
-
 class MenusView: UIView {
     
     weak var delegate: MenusViewDelegate?

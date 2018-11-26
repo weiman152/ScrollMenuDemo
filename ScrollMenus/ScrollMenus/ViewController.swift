@@ -25,15 +25,15 @@ class ViewController: UIViewController {
                               imageNormal: nil,
                               imageSelected: nil)
         let menu2 = MenuModel(title: "680人",
-                              imageNormal: #imageLiteral(resourceName: "personNumber"),
-                              imageSelected: #imageLiteral(resourceName: "personNumber"))
+                              imageNormal: #imageLiteral(resourceName: "personNumber_normal"),
+                              imageSelected: #imageLiteral(resourceName: "personNumber_selected"))
         let menu3 = MenuModel(title: "商品详情",
                               imageNormal: nil,
                               imageSelected: nil)
         
         let menu = ScrollMenus(titles: [menu1, menu2, menu3],
-                               menuHeight: 44,
-                               frame: menuView.bounds)
+                               frame: menuView.bounds,
+                               menuHeight: 44)
         menuView.addSubview(menu)
     }
 }
