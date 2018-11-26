@@ -14,15 +14,21 @@ protocol MenusViewDelegate: NSObjectProtocol {
     func menuClick(index: Int)
 }
 
+struct MenuModel {
+    let title: String             // 标题文字，一定要有
+    let imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
+    let imageSelected: UIImage?   // 标题左侧图片，选中状态，可选
+}
+
 class MenusView: UIView {
     
     weak var delegate: MenusViewDelegate?
     
-    private var titles: [String] = []
+    private var titles: [MenuModel] = []
     private var titleButtons: [UIButton] = []
     private var currentSelectIndex: Int = 0
     
-    init(titles: [String], frame: CGRect) {
+    init(titles: [MenuModel], frame: CGRect) {
         self.titles = titles
         super.init(frame: frame)
         setup()
@@ -41,8 +47,8 @@ class MenusView: UIView {
             return
         }
         // 根据给出的标题创建按钮，平分屏幕
-        for (i, title) in titles.enumerated() {
-            let button = makeButton(index: i, title: title)
+        for (i, menu) in titles.enumerated() {
+            let button = makeButton(index: i, menu: menu)
             addSubview(button)
             titleButtons.append(button)
         }
@@ -124,7 +130,7 @@ extension MenusView {
 // MARK: - private funcs
 extension MenusView {
     
-    private func makeButton(index: Int, title: String) -> UIButton {
+    private func makeButton(index: Int, menu: MenuModel) -> UIButton {
         
         let width = bounds.size.width / CGFloat(titles.count)
         let height = bounds.size.height
@@ -133,9 +139,11 @@ extension MenusView {
         button.tag = index
         let x = CGFloat(index) * width
         button.frame = CGRect(x: x, y: 0, width: width, height: height)
-        button.setTitle(title, for: .normal)
+        button.setTitle(menu.title, for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1), for: .normal)
         button.setTitleColor(#colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1), for: .selected)
+        button.setImage(menu.imageNormal, for: .normal)
+        button.setImage(menu.imageSelected, for: .selected)
         button.isSelected = (button.tag == currentSelectIndex) ? true : false
         button.addTarget(self, action: #selector(buttonAction(button:)), for: .touchUpInside)
         return button

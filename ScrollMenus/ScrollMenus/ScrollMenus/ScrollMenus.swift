@@ -13,12 +13,12 @@ class ScrollMenus: UIView {
     private var menus: MenusView!
     private var line: UIView!
     private var collectionView: UICollectionView!
-    private var titles: [String] = []
+    private var titles: [MenuModel] = []
     private var menuHeight: CGFloat = 44
     private let collectionViewModel = CollectionViewModel()
     private var lineOriginalX: CGFloat?
     
-    init(titles: [String], menuHeight: CGFloat = 44, frame: CGRect) {
+    init(titles: [MenuModel], menuHeight: CGFloat = 44, frame: CGRect) {
         self.titles = titles
         self.menuHeight = menuHeight
         super.init(frame: frame)
