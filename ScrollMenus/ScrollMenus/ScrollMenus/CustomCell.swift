@@ -10,8 +10,6 @@ import UIKit
 
 class CustomCell: UICollectionViewCell {
     
-    private var vc = UIViewController()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -23,9 +21,7 @@ class CustomCell: UICollectionViewCell {
     }
     
     private func setup() {
-        vc.view.frame = bounds
-        addSubview(vc.view)
-        vc.view.backgroundColor = UIColor.armColor()
+        backgroundColor = .armColor()
     }
 }
 

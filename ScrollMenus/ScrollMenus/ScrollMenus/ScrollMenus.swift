@@ -8,6 +8,18 @@
 
 import UIKit
 
+protocol ScrollMenusDataSource: NSObjectProtocol {
+    /// 菜单个数
+    func menuViewNumberOfItems() -> Int
+    /// 菜单的Item
+    func menuViewViewForItems(atIndex: Int) -> UIView
+}
+
+protocol ScrollMenusDelegate: NSObjectProtocol {
+    /// 菜单切换了
+    func menuDidChange(currentIndex: Int)
+}
+
 struct MenuModel {
     let title: String             // 标题文字，一定要有
     let imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
@@ -15,6 +27,9 @@ struct MenuModel {
 }
 
 class ScrollMenus: UIView {
+    
+    weak var dataSource: ScrollMenusDataSource?
+    weak var delegate: ScrollMenusDelegate?
     
     private var menus: MenusView!
     private var line: UIView!
@@ -46,6 +61,13 @@ class ScrollMenus: UIView {
 
 extension ScrollMenus {
     
+    public func set(menuIndex: Int) {
+        menuClick(index: menuIndex)
+    }
+}
+
+extension ScrollMenus {
+    
     private func setMenus() {
         let frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: menuHeight)
         menus = MenusView(titles: titles, frame: frame)
@@ -70,6 +92,7 @@ extension ScrollMenus {
                                           collectionViewLayout: layout)
         addSubview(collectionView)
         collectionViewModel.delegate = self
+        collectionViewModel.dataSource = self
         collectionViewModel.set(collectionView: collectionView,
                                 itemCount: titles.count)
     }
@@ -101,6 +124,7 @@ extension ScrollMenus: CollectionViewModelDelegate {
     func menuDidChange(index: Int) {
         menus.setSelect(index: index)
         updateLineFrame()
+        delegate?.menuDidChange(currentIndex: index)
     }
     
     func menuDidScroll(offset: CGPoint, scrollWidth: CGFloat) {
@@ -121,10 +145,23 @@ extension ScrollMenus: CollectionViewModelDelegate {
     }
 }
 
+extension ScrollMenus: CollectionViewModelDataSource {
+    
+    func menuViewNumberOfItems() -> Int {
+        return dataSource?.menuViewNumberOfItems() ?? 0
+    }
+    
+    func menuViewViewForItems(atIndex: Int) -> UIView {
+        return dataSource?.menuViewViewForItems(atIndex: atIndex) ?? UIView()
+    }
+}
+
 extension ScrollMenus: MenusViewDelegate {
     
     func menuClick(index: Int) {
         updateLineFrame()
+        menus.setSelect(index: index)
         collectionViewModel.scrollTo(index: index)
+        delegate?.menuDidChange(currentIndex: index)
     }
 }

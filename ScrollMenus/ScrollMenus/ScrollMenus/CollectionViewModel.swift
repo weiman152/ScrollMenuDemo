@@ -15,9 +15,17 @@ protocol CollectionViewModelDelegate: NSObjectProtocol {
     func menuDidScroll(offset: CGPoint, scrollWidth: CGFloat)
 }
 
+protocol CollectionViewModelDataSource: NSObjectProtocol {
+    /// 菜单个数
+    func menuViewNumberOfItems() -> Int
+    /// 菜单的Item
+    func menuViewViewForItems(atIndex: Int) -> UIView
+}
+
 class CollectionViewModel: NSObject {
     
     weak var delegate: CollectionViewModelDelegate?
+    weak var dataSource: CollectionViewModelDataSource?
     
     private var collectionView: UICollectionView?
     private var itemCount = 0
@@ -43,6 +51,7 @@ extension CollectionViewModel {
         guard let width = collectionView?.frame.size.width else {
             return
         }
+        currentIndex = index
         let offX = CGFloat(index) * width
         collectionView?.contentOffset = CGPoint(x: offX, y: 0)
     }
@@ -51,11 +60,16 @@ extension CollectionViewModel {
 extension CollectionViewModel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return itemCount
+        //return itemCount
+        return dataSource?.menuViewNumberOfItems() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath)
+        let view = dataSource?.menuViewViewForItems(atIndex: indexPath.row)
+        if let view = view {
+            cell.addSubview(view)
+        }
         return cell
     }
 }

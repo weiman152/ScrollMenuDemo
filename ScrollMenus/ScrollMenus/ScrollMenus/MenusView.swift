@@ -148,7 +148,6 @@ extension MenusView {
             setSelect(index: button.tag)
             delegate?.menuClick(index: button.tag)
         }
-        
     }
     
 }
