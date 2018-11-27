@@ -37,6 +37,9 @@ class ViewController: UIViewController {
         menu.dataSource = self
         menu.delegate = self
         menu.set(menuIndex: 1)
+        menu.lineColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        menu.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        menu.textSeletedColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
         menuView.addSubview(menu)
     }
 }

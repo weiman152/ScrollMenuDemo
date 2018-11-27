@@ -17,6 +17,22 @@ protocol MenusViewDelegate: NSObjectProtocol {
 class MenusView: UIView {
     
     weak var delegate: MenusViewDelegate?
+    /// 菜单文字的颜色
+    var textColor: UIColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1) {
+        didSet {
+            for button in titleButtons {
+                button.setTitleColor(textColor, for: .normal)
+            }
+        }
+    }
+    /// 选中文字颜色
+    var textSeletedColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
+        didSet {
+            for button in titleButtons {
+                button.setTitleColor(textSeletedColor, for: .selected)
+            }
+        }
+    }
     
     private var titles: [MenuModel] = []
     private var titleButtons: [UIButton] = []
@@ -134,8 +150,8 @@ extension MenusView {
         let x = CGFloat(index) * width
         button.frame = CGRect(x: x, y: 0, width: width, height: height)
         button.setTitle(menu.title, for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1), for: .normal)
-        button.setTitleColor(#colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1), for: .selected)
+        button.setTitleColor(textColor, for: .normal)
+        button.setTitleColor(textSeletedColor, for: .selected)
         button.setImage(menu.imageNormal, for: .normal)
         button.setImage(menu.imageSelected, for: .selected)
         button.isSelected = (button.tag == currentSelectIndex) ? true : false

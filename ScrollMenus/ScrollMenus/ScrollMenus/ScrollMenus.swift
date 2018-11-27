@@ -30,6 +30,23 @@ class ScrollMenus: UIView {
     
     weak var dataSource: ScrollMenusDataSource?
     weak var delegate: ScrollMenusDelegate?
+    var lineColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
+        didSet {
+            line.backgroundColor = lineColor
+        }
+    }
+    /// 菜单文字的颜色
+    var textColor: UIColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1) {
+        didSet {
+           menus.textColor = textColor
+        }
+    }
+    /// 选中文字颜色
+    var textSeletedColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
+        didSet {
+           menus.textSeletedColor = textSeletedColor
+        }
+    }
     
     private var menus: MenusView!
     private var line: UIView!
@@ -61,6 +78,7 @@ class ScrollMenus: UIView {
 
 extension ScrollMenus {
     
+    /// 设置当前选中的index
     public func set(menuIndex: Int) {
         menuClick(index: menuIndex)
     }
@@ -77,7 +95,7 @@ extension ScrollMenus {
     
     private func setLine() {
         line = UIView(frame: getLineFrame())
-        line.backgroundColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1)
+        line.backgroundColor = lineColor
         addSubview(line)
     }
     
