@@ -67,6 +67,7 @@ extension CollectionViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath)
         let view = dataSource?.menuViewViewForItems(atIndex: indexPath.row)
+        view?.frame = cell.contentView.bounds
         if let view = view {
             cell.addSubview(view)
         }
