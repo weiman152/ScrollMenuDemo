@@ -147,5 +147,20 @@
             </objects>
             <point key="canvasLocation" x="1514" y="134"/>
         </scene>
+        <!--Third View Controller-->
+        <scene sceneID="KP2-Bl-5H0">
+            <objects>
+                <viewController storyboardIdentifier="ThirdViewController" id="nPf-c9-M9t" customClass="ThirdViewController" customModule="ScrollMenus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O1k-Jb-g2L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.92156862750000001" green="0.3411764706" blue="0.33725490200000002" alpha="1" colorSpace="deviceRGB"/>
+                        <viewLayoutGuide key="safeArea" id="zPV-W5-nLR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tA2-GC-Cvh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302" y="137"/>
+        </scene>
     </scenes>
 </document>

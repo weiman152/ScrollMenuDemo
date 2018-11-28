@@ -19,6 +19,7 @@
 		818138FD21AD218300C070E2 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818138FC21AD218300C070E2 /* FirstViewController.swift */; };
 		818138FF21AD219A00C070E2 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818138FE21AD219A00C070E2 /* SecondViewController.swift */; };
 		8181390121AD4FED00C070E2 /* FirstCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8181390021AD4FED00C070E2 /* FirstCell.swift */; };
+		8181390521AE7EBE00C070E2 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8181390421AE7EBE00C070E2 /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		818138FC21AD218300C070E2 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		818138FE21AD219A00C070E2 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		8181390021AD4FED00C070E2 /* FirstCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstCell.swift; sourceTree = "<group>"; };
+		8181390421AE7EBE00C070E2 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				818138FC21AD218300C070E2 /* FirstViewController.swift */,
 				8181390021AD4FED00C070E2 /* FirstCell.swift */,
 				818138FE21AD219A00C070E2 /* SecondViewController.swift */,
+				8181390421AE7EBE00C070E2 /* ThirdViewController.swift */,
 				810F480B21A3F684006839B0 /* Main.storyboard */,
 				810F480E21A3F686006839B0 /* Assets.xcassets */,
 				810F481021A3F686006839B0 /* LaunchScreen.storyboard */,
@@ -166,6 +169,7 @@
 			files = (
 				818138FF21AD219A00C070E2 /* SecondViewController.swift in Sources */,
 				810F480A21A3F684006839B0 /* ViewController.swift in Sources */,
+				8181390521AE7EBE00C070E2 /* ThirdViewController.swift in Sources */,
 				810F481D21A3F878006839B0 /* MenusView.swift in Sources */,
 				810F480821A3F684006839B0 /* AppDelegate.swift in Sources */,
 				810F481B21A3F850006839B0 /* ScrollMenus.swift in Sources */,

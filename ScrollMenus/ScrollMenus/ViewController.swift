@@ -12,6 +12,21 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var menuView: UIView!
     private var menus: [MenuModel] = []
+    private var childs: [UIViewController] = [FirstViewController.instance(),
+                                              SecondViewController.instance(),
+                                              ThirdViewController.instance()]
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        
+        childs.forEach { addChild($0) }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        childs.forEach { addChild($0) }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,22 +66,10 @@ extension ViewController: ScrollMenusDataSource {
     }
     
     func menuViewViewForItems(atIndex: Int) -> UIView {
-        guard atIndex < menus.count else {
+        guard atIndex < menus.count, atIndex < childs.count else {
             return UIView()
         }
-        switch atIndex {
-        case 0:
-            let vc = FirstViewController.instance()
-            return vc.view
-        case 1:
-            let vc = SecondViewController.instance()
-            return vc.view
-        case 2:
-            let vc = FirstViewController.instance()
-            return vc.view
-        default:
-            return UIView()
-        }
+        return childs[atIndex].view
     }
 }
 
@@ -74,6 +77,7 @@ extension ViewController: ScrollMenusDelegate {
     
     func menuDidChange(currentIndex: Int) {
         print("------------  \(currentIndex)")
+        
     }
 }
 

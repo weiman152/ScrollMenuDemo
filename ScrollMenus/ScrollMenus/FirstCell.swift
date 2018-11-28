@@ -17,7 +17,5 @@ class FirstCell: UITableViewCell {
     func set(num: Int) {
         numLabel.text = "num = \(num)"
         descLabel.text = num % 2 == 0 ? "Swift" : "OC"
-        
-        print("-------- \(bounds)")
     }
 }
