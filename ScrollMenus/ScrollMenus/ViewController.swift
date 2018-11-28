@@ -19,13 +19,13 @@ class ViewController: UIViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        childs.forEach { addChild($0) }
+        childs.forEach { addChildViewController($0) }
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        childs.forEach { addChild($0) }
+        childs.forEach { addChildViewController($0) }
     }
     
     override func viewDidLoad() {
