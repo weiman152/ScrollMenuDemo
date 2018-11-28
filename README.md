@@ -135,7 +135,9 @@ print("------------  \(currentIndex)")
 }
 
 <br>
+
 ![Alt text](https://github.com/weiman152/ScrollMenuSwift/blob/master/screenShot/QQ20181127-202716.gif)
+
 
 
 备注：正在完善中，有任何意见或建议都欢迎留言。
