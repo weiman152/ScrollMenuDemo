@@ -1,7 +1,6 @@
 # ScrollMenuSwift
 
-Swift4, 滑动菜单View，支持滑动，点击切换，不依赖任何三方，纯手工计算，目前不完善，
-只有底部滑动条的样式，代理也不够完善，开发中。。。
+Swift4, 滑动菜单View，支持滑动，点击切换，不依赖任何三方，纯手工计算。
 
 环境：
 
@@ -139,4 +138,4 @@ print("------------  \(currentIndex)")
 ![Alt text](https://github.com/weiman152/ScrollMenuSwift/blob/master/screenShot/QQ20181127-202716.gif)
 
 
-备注：正在完善中
+备注：正在完善中，有任何意见或建议都欢迎留言。
