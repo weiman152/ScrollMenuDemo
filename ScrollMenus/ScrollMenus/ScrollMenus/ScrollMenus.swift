@@ -8,41 +8,47 @@
 
 import UIKit
 
-protocol ScrollMenusDataSource: NSObjectProtocol {
+public protocol ScrollMenusDataSource: NSObjectProtocol {
     /// 菜单个数
     func menuViewNumberOfItems() -> Int
     /// 菜单的Item
     func menuViewViewForItems(atIndex: Int) -> UIView
 }
 
-protocol ScrollMenusDelegate: NSObjectProtocol {
+public protocol ScrollMenusDelegate: NSObjectProtocol {
     /// 菜单切换了
     func menuDidChange(currentIndex: Int)
 }
 
-struct MenuModel {
-    let title: String             // 标题文字，一定要有
-    let imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
-    let imageSelected: UIImage?   // 标题左侧图片，选中状态，可选
+public struct MenuModel {
+    var title: String             // 标题文字，一定要有
+    var imageNormal: UIImage?     // 标题左侧图片，正常状态，可选
+    var imageSelected: UIImage?   // 标题左侧图片，选中状态，可选
+    
+    public init(title: String, imageNormal: UIImage?, imageSelected: UIImage?) {
+        self.title = title
+        self.imageNormal = imageNormal
+        self.imageSelected = imageSelected
+    }
 }
 
-class ScrollMenus: UIView {
+public class ScrollMenus: UIView {
     
-    weak var dataSource: ScrollMenusDataSource?
-    weak var delegate: ScrollMenusDelegate?
-    var lineColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
+    public weak var dataSource: ScrollMenusDataSource?
+    public weak var delegate: ScrollMenusDelegate?
+    public var lineColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
         didSet {
             line.backgroundColor = lineColor
         }
     }
     /// 菜单文字的颜色
-    var textColor: UIColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1) {
+    public var textColor: UIColor = #colorLiteral(red: 0.3725490196, green: 0.3725490196, blue: 0.3725490196, alpha: 1) {
         didSet {
            menus.textColor = textColor
         }
     }
     /// 选中文字颜色
-    var textSeletedColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
+    public var textSeletedColor: UIColor = #colorLiteral(red: 1, green: 0.5019607843, blue: 0, alpha: 1) {
         didSet {
            menus.textSeletedColor = textSeletedColor
         }
@@ -56,7 +62,7 @@ class ScrollMenus: UIView {
     private let collectionViewModel = CollectionViewModel()
     private var lineOriginalX: CGFloat?
     
-    init(titles: [MenuModel], frame: CGRect, menuHeight: CGFloat = 44) {
+    public init(titles: [MenuModel], frame: CGRect, menuHeight: CGFloat = 44) {
         self.titles = titles
         self.menuHeight = menuHeight
         super.init(frame: frame)
